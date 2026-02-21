@@ -1,0 +1,8 @@
+<h1>Tags</h1>
+
+<div class="row">
+{% for tag in collections | getKeys | filterTagList | sortAlphabetically %}
+	{% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+	<div class="col-md-2 p-2"><a href="{{ tagUrl }}" class="btn btn-dark text-white">{{ tag }}</a></div>
+{% endfor %}
+</div>

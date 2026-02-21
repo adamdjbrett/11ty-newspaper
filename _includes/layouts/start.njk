@@ -1,0 +1,55 @@
+---
+layout: layouts/base.njk
+---
+<div class="row g-4">
+    {% for post in posts %}
+    <div class="col-md-6 col-lg-4">
+        <article class="post-card">
+            {% if post.data.image %}
+               <a href="{{ post.url }}" ><img src="{{ post.data.image }}" class="img-fluid mb-3" 
+                style="max-height: 400px; object-fit: cover;" alt="{{ post.data.title }}"></a> 
+            {% else %}
+                <a href="{{ post.url }}" ><img src="https://placehold.co/600x400/000/fff?text={{ post.data.title | urlencode }}" 
+                style="max-height: 400px; object-fit: cover;" class="img-fluid mb-3" alt="{{ post.data.title }}"></a>
+            {% endif %}
+
+            <span class="text-secondary fw-bold small text-uppercase">
+                {% set primaryTag = post.data.tags | filterTagList | first %}
+                {{ primaryTag if primaryTag else "General" }}
+            </span>
+
+            <h3 class="h5 fw-bold mt-2">
+                <a href="{{ post.url }}" class="text-dark text-decoration-none">
+                    {{ post.data.title }}
+                </a>
+            </h3>
+
+            <p class="text-muted small">
+                {{ post.data.description | truncate(120) }}
+            </p>
+        </article>
+    </div>
+    {% endfor %}
+</div>
+
+<hr class="my-5">
+
+{% if pagination.href.next or pagination.href.previous %}
+<nav aria-label="Page navigation" class="d-flex justify-content-center">
+    <ul class="pagination">
+        {% if pagination.href.previous %}
+            <li class="page-item"><a class="page-link border-dark text-dark" href="{{ pagination.href.previous }}">Newer</a></li>
+        {% else %}
+            <li class="page-item disabled"><span class="page-link border-light text-muted">Newer</span></li>
+        {% endif %}
+
+        {% if pagination.href.next %}
+            <li class="page-item"><a class="page-link border-dark text-dark" href="{{ pagination.href.next }}">Older</a></li>
+        {% else %}
+            <li class="page-item disabled"><span class="page-link border-light text-muted">Older</span></li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+
+{% include "partials/newsletter.njk" %}

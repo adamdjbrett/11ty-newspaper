@@ -1,0 +1,98 @@
+---
+layout: layouts/base.njk
+---
+<div class="container my-5 position-relative">
+    <div class="row justify-content-center">
+        
+        <div class="col-lg-1 d-none d-lg-block">
+            <aside class="sticky-share-bar">
+                <div class="d-flex flex-column gap-3 align-items-center">
+                    <a href="https://twitter.com/intent/tweet?url={{ metadata.url }}{{ page.url }}&text={{ title }}" class="share-icon" target="_blank" rel="noopener"><i class="fab fa-x-twitter text-white"></i></a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ metadata.url }}{{ page.url }}" class="share-icon" target="_blank" rel="noopener"><i class="fab fa-facebook-f text-white"></i></a>
+                    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ metadata.url }}{{ page.url }}" class="share-icon" target="_blank" rel="noopener"><i class="fab fa-linkedin-in text-white"></i></a>
+                    <a href="mailto:?subject={{ title }}&body={{ metadata.url }}{{ page.url }}" class="share-icon"><i class="fas fa-envelope text-white"></i></a>
+                </div>
+            </aside>
+        </div>
+
+        <article class="col-lg-8 col-md-10 text-center" data-pagefind-body>
+            <header class="post-header mb-5">
+                <p class="text-secondary fw-bold text-uppercase small mb-2">
+                    {{ description }}<br/>
+                    <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
+                </p>
+                <h1 class="display-4 fw-bold mb-3"><a class="text-decoration-none" href="{{ page.url }}">{{ title }}</a></h1>
+               {% if author %}
+  {% set authorObj = collections.authors | getAuthorObj(author) %}
+  <p class="text-muted">
+    Written by 
+    {% if authorObj %}
+      <a href="/authors/{{ authorObj.fileSlug }}" class="fw-bold text-dark text-decoration-none hover-underline">
+        {{ authorObj.data.name }}
+      </a>
+    {% else %}
+      <span class="fw-bold text-dark">{{ author | default(metadata.author.name) }}</span>
+    {% endif %}
+  </p>
+{% endif %}
+
+                <hr class="short-hr mx-auto" style="width: 60px; border-top: 3px solid #000; opacity: 1;">
+            </header>
+
+            <div class="post-content text-start mx-auto" style="max-width: 600px;">
+                {% if image %}
+                <img class="img-fluid mb-5 rounded shadow-sm" 
+                style="max-height: 400px; object-fit: cover;"
+                    src="{{ image  }}"
+                    alt="{{ title }}">
+                {% endif %}
+
+                  {% if content | toc %}
+    <div class="bg-light p-4 rounded shadow-sm mb-4">
+      <h3>{{ metadata.table_of_content }}</h3>
+      {{ content | toc | md | safe }}
+    </div>
+  {% endif %}
+
+                {{ content | safe }}
+            </div>
+
+            {% if tags %}
+            <div class="post-tags mt-5 text-start mx-auto" style="max-width: 600px;">
+                {% for tag in tags | filterTagList %}
+                    {% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+                    <a href="{{ tagUrl }}" class="badge border text-dark text-decoration-none fw-normal me-1">{{ tag }}</a>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if collections.posts %}
+                {% set previousPost = collections.posts | getPreviousCollectionItem %}
+                {% set nextPost = collections.posts | getNextCollectionItem %}
+                
+                <nav class="post-navigation border-top border-bottom py-4 mt-5">
+                    <div class="row align-items-center">
+                        <div class="col-6 text-start">
+                            {% if previousPost %}
+                                <a href="{{ previousPost.url }}" class="text-decoration-none text-muted small text-uppercase d-block mb-1">Previous Post</a>
+                                <h4 class="h6 mb-0">
+                                    <a href="{{ previousPost.url }}" class="text-dark fw-bold text-decoration-none">← {{ previousPost.data.title }}</a>
+                                </h4>
+                            {% endif %}
+                        </div>
+                        <div class="col-6 text-end">
+                            {% if nextPost %}
+                                <a href="{{ nextPost.url }}" class="text-decoration-none text-muted small text-uppercase d-block mb-1">Next Post</a>
+                                <h4 class="h6 mb-0">
+                                    <a href="{{ nextPost.url }}" class="text-dark fw-bold text-decoration-none">{{ nextPost.data.title }} →</a>
+                                </h4>
+                            {% endif %}
+                        </div>
+                    </div>
+                </nav>
+            {% endif %}
+        </article>
+
+        <div class="col-lg-1 d-none d-lg-block"></div>
+    </div>
+</div>

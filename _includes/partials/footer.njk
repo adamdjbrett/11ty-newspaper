@@ -1,0 +1,49 @@
+    <footer class="footer-main bg-black text-white pt-5 pb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <h6 class="footer-heading fw-bold text-uppercase mb-4">{{metadata.footer.nav1.title}}</h6>
+                    <ul class="list-unstyled footer-links">{% for s in metadata.footer.nav1.items %}
+                        <li><a class="text-white" href="{{ s.url }}">{{ s.title }}</a></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h6 class="footer-heading fw-bold text-uppercase mb-4">{{metadata.footer.nav2.title}}</h6>
+                     <ul class="list-unstyled footer-links">{% for s in metadata.footer.nav2.items %}
+                        <li><a class="text-white" href="{{ s.url }}">{{ s.title }}</a></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h6 class="footer-heading fw-bold text-uppercase mb-4">{{metadata.footer.nav3.title}}</h6>
+                     <ul class="list-unstyled footer-links">{% for s in metadata.footer.nav3.items %}
+                        <li><a class="text-white" href="{{ s.url }}">{{ s.title }}</a></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h6 class="footer-heading fw-bold text-uppercase mb-4">{{metadata.footer.nav4.title}}</h6>
+                     <ul class="list-unstyled footer-links">{% for s in metadata.footer.nav4.items %}
+                        <li><a class="text-white"href="{{ s.url }}">{{ s.title }}</a></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4 text-center">
+                    <img src="{{metadata.footer.logo.image}}" class="rounded-circle img-fluid bg-white p-1" 
+                    alt="{{metadata.footer.logo.alt}}" style="object-fit: cover;">
+                </div>
+            </div>
+
+            <div class="row mt-4 pt-4 border-top border-secondary">
+                <div class="col-12 text-center">
+                    <p class="small text-white mb-3">
+                       {{metadata.footer.text | md | safe}}
+                    </p>
+                    <p class="tiny-text opacity-50 px-md-5">
+                        {{metadata.footer.info | md | safe}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>

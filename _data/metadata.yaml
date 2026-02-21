@@ -1,0 +1,104 @@
+title: "11ty News Paper"
+url: http://localhost:8080
+language: en
+locale: "en_US"
+description: "A safer space for writers of all kinds and experience, both as a place to work and as a place to share."
+favicon: https://placehold.co/32x32
+image: https://placehold.co/32x32
+
+metasocial: 
+  twitter: "https://x.com/user"
+  tweettwitteruser: "@user"
+  facebook: "https://fb.com/user"
+
+
+table_of_content: Table of Content
+
+hero: 
+  title: 11ty News Paper
+  description: |
+    A safer space for writers of all kinds and experience, both as a place to work and as a place to share.
+  social: 
+    - title: Twitter
+      url: https://x.com/user
+      icon: "fa-brands fa-x-twitter"
+    - title: Facebook
+      url: https://fb.com/user
+      icon: "fa-brands fa-facebook"
+    - title: Instagram
+      url: https://instagram.com/user
+      icon: "fa-brands fa-instagram"
+    - title: LinkedIn
+      url: https://linkedin.com/in/user
+      icon: "fa-brands fa-linkedin"
+  navbar: 
+    - title: Home
+      url: /
+    - title: About
+      url: /about/
+    - title: Writing
+      url: /blog/
+    - title: Authors
+      url: /authors/
+    - title: Submissions
+      url: /submissions/
+
+newsletter: 
+  show: true
+  title: "Subscribe to our Newsletter"
+  description: "Get the latest updates and news delivered straight to your inbox."
+  placeholder: "Enter your email address"
+  button: "Subscribe"
+  form_spree: https://formspree.io/f/YOUR_FORMSPREE_ID
+
+footer: 
+  nav1: 
+    title: "Navigation"
+    items: 
+      - title: Home
+        url: /
+      - title: About
+        url: /about/
+      - title: Writing
+        url: /blog/
+      - title: Authors
+        url: /authors/
+      - title: Submissions
+        url: /submissions/
+  nav2: 
+    title: "Resources"
+    items: 
+      - title: Contact Us
+        url: /contact/
+      - title: Privacy Policy
+        url: /privacy/
+      - title: Terms of Service
+        url: /terms/
+  nav3: 
+    title: "Follow Us"
+    items: 
+      - title: Twitter      
+        url: https://x.com/user
+      - title: Facebook
+        url: https://fb.com/user
+      - title: Instagram
+        url: https://instagram.com/user
+      - title: LinkedIn
+        url: https://linkedin.com/in/user
+  nav4: 
+    title: "Contact"
+    items: 
+      - title: Email
+        url: mailto:hello@domain.com
+      - title: Map Location
+        url: https://maps.google.com/?q=location
+      - title: Phone
+        url: tel:+1234567890
+  logo: 
+    image: https://placehold.co/200x200
+    alt: "Logo"
+  text: |
+    A safer space for writers of all kinds and experience, both as a place to work and as a place to share.
+  info: |
+    &copy; 2024 11ty News Paper. All rights reserved. | [Adam DJ Brett](https://adamdjbrett.com) | Built with [11ty](https://www.11ty.dev/)
+
