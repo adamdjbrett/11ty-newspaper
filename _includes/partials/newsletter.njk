@@ -1,0 +1,32 @@
+{% if metadata.newsletter.show %}
+<section class="newsletter-box text-center py-5 border-top border-bottom bg-light">
+    <div class="container">
+        <h2 class="fw-bold h1 mb-3">{{ metadata.newsletter.title }}</h2>
+        <p class="text-secondary mb-4 mx-auto" style="max-width: 600px;">
+            {{ metadata.newsletter.description }}
+        </p>
+
+        <div class="d-flex justify-content-center">
+            <form action="{{metadata.newsletter.form_spree}}" 
+                  method="POST" class="w-100" 
+                  style="max-width: 500px;">
+                <div class="input-group mb-3">
+                    <input 
+                        type="email" 
+                        name="email"
+                        class="form-control rounded-0 border-dark shadow-none" 
+                        placeholder="{{ metadata.newsletter.placeholder }}" 
+                        required
+                    >
+                    <button class="btn btn-dark rounded-0 px-4 fw-bold text-uppercase" type="submit">
+                        {{ metadata.newsletter.button }}
+                    </button>
+                </div>
+                <small class="text-muted italic" style="font-size: 0.75rem;">
+                    We respect your privacy. No spam, ever.
+                </small>
+            </form>
+        </div>
+    </div>
+</section>
+{% endif %}

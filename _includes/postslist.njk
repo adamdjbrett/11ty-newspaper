@@ -1,0 +1,35 @@
+<div class="row g-4" data-pagefind-body>
+    {% for post in postslist | reverse %}
+    <div class="col-md-6 col-lg-4">
+        <article class="post-card h-100 position-relative">
+            <div class="post-image-wrapper mb-3">
+                {% if post.data.image %}
+                    <img src="{{ post.data.image }}" class="img-fluid" alt="{{ post.data.title }}" loading="lazy">
+                {% else %}
+                    <img src="https://placehold.co/600x400/000/fff?text={{ post.data.title | urlencode }}" class="img-fluid" alt="{{ post.data.title }}">
+                {% endif %}
+            </div>
+            
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="text-secondary fw-bold small text-uppercase">
+                    {% set primaryTag = post.data.tags | filterTagList | first %}
+                    {{ primaryTag if primaryTag else "Writing" }}
+                </span>
+                <time class="text-muted small" datetime="{{ post.date | htmlDateString }}">
+                    {{ post.date | readableDate("dd LLLL yyyy") }}
+                </time>
+            </div>
+            
+            <h3 class="h5 fw-bold mt-2">
+                <a href="{{ post.url }}" class="text-dark text-decoration-none stretched-link">
+                    {% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}
+                </a>
+            </h3>
+            
+            <p class="text-muted small">
+                {{ post.data.description | truncate(120) if post.data.description else "No description available for this post." }}
+            </p>
+        </article>
+    </div>
+    {% endfor %}
+</div>

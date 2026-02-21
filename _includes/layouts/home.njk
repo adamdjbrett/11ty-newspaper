@@ -1,0 +1,10 @@
+---
+layout: layouts/base.njk
+---
+<div class="col-md-10 mx-auto p-3">
+{% if title %}
+<h2 class="fw-bold display-4"><a href="{{ page.url }}" class="text-decoration-none text-dark">
+{{ title }}</a></h2>
+{% endif %}
+{{ content | safe }}
+</div>

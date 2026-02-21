@@ -1,0 +1,68 @@
+<nav class="navbar navbar-expand-lg sticky-top border-top border-bottom bg-white">
+    <div class="container">
+        <div class="search-box-wrapper d-flex align-items-center">
+            <i class="fas fa-search search-icon me-2 text-muted"></i>
+            <input type="text" id="liveSearchInput" class="form-control border-0 shadow-none p-0" placeholder="Search...">
+            
+            <div id="searchDropdown" class="search-dropdown-results d-none shadow-sm border bg-white">
+                <ul class="list-unstyled mb-0 py-2" id="searchResultList">
+                    </ul>
+            </div>
+        </div>
+
+         <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+            <small>Menu</small>  
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+          <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-bold text-uppercase small">
+                {% for n in metadata.hero.navbar %}
+                <li class="nav-item"><a class="nav-link {% if page.url == n.url %}active{% endif %} px-3" href="{{n.url}}">{{n.title}}</a></li>
+                {% endfor %}
+            </ul>
+
+            <div class="social-icons d-none d-xl-flex gap-3">
+                {% for link in metadata.hero.social %}
+                <a href="{{ link.url }}" title="{{ link.title }}">
+                    <i class="{{ link.icon }}"></i>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="offcanvas offcanvas-end sidebar-nav border-start-0" tabindex="-1" id="sidebarMenu">
+    <div class="offcanvas-header border-bottom py-4">
+        <h5 class="offcanvas-title fw-bold text-uppercase" style="letter-spacing: 1px;">{{ hero.title }}</h5>
+        <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas"></button>
+    </div>
+    
+    <div class="offcanvas-body d-flex flex-column p-4">
+        <ul class="mobile-nav-links list-unstyled fs-4 fw-bold">
+            {% for item in metadata.hero.navbar %}
+            <li class="mb-2">
+                <a href="{{ item.url }}" class="text-dark text-decoration-none d-block py-1">{{ item.title }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <div class="mt-auto pt-4 border-top">
+            <p class="small fw-bold text-uppercase text-muted mb-3" style="font-size: 0.65rem; letter-spacing: 2px;">Follow Us</p>
+            <div class="d-flex gap-4 fs-3 mb-4">
+                {% for link in metadata.hero.social %}
+                <a href="{{ link.url }}" class="text-dark opacity-75">
+                    <i class="{{ link.icon }}"></i>
+                </a>
+                {% endfor %}
+            </div>
+            <div class="site-info">
+                <p class="small text-muted mb-0" style="font-size: 0.75rem; line-height: 1.5;">
+                    Built with <a href="https://www.11ty.dev/" class="text-decoration-none">11ty</a> | Develope <a href="https://adamdjbrett.com/" class="text-decoration-none">Adam Dj Brett</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
